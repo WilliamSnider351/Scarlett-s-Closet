@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scarlett's Closet - Look Details</title>
+
+  <!-- Fonts & CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Playfair Display', serif;
+      background-color: black;
+      color: white;
+      margin: 20px;
+    }
+
+    .hero-title {
+      color: white;
+      font-weight: 700;
+      font-size: 2rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+    }
+
+    .shopping-bag-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    .shopping-bag-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .sale-container {
+      max-width: 600px;
+      margin: 100px auto 40px auto;
+      padding: 20px;
+    }
+
+    #look-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .sale-title {
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .model-link {
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: capitalize;
+    }
+    .model-link:hover {
+      text-decoration: underline;
+    }
+
+    .sale-description {
+      margin-bottom: 15px;
+      font-style: normal;
+      font-weight: 400;
+    }
+    p strong {
+      font-weight: 700;
+    }
+
+    .size-options {
+      display: flex;
+      gap: 15px;
+      margin: 15px 0;
+    }
+    .size-options input[type="radio"] {
+      display: none;
+    }
+    .size-options label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid white;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .size-options input[type="radio"]:checked + label {
+      background-color: orange;
+      color: black;
+      border-color: orange;
+    }
+
+    label[for="color"] {
+      font-weight: 700;
+    }
+    select#color {
+      margin-top: 5px;
+      padding: 5px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1rem;
+      background-color: black;
+      color: white;
+      border: 2px solid white;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    #add-to-bag-btn {
+      margin-top: 20px;
+      padding: 10px 25px;
+      background-color: orange;
+      border: none;
+      color: black;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    #add-to-bag-btn:hover {
+      background-color: #e67300;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    #bag-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: orange;
+      color: black;
+      font-weight: 700;
+      font-size: 12px;
+      width: 18px;
+      height: 18px;
+      line-height: 18px;
+      border-radius: 50%;
+      text-align: center;
+      pointer-events: none;
+      user-select: none;
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="hero-title">SCARLETT’S CLOSET</a>
+
+  <a href="bag.html" class="shopping-bag-icon" aria-label="View Shopping Bag">
+    <img src="baggette.png" alt="Shopping Bag Icon" />
+    <span id="bag-count">0</span>
+  </a>
+
+  <div class="sale-container">
+    <img id="look-image" src="" alt="Fashion look" />
+    <h2 class="sale-title" id="look-title">Loading...</h2>
+    <p class="sale-description" id="look-description"></p>
+    <p><strong>Price:</strong> $<span id="look-price">0.00</span></p>
+
+    <fieldset>
+      <legend style="font-weight:700; margin-bottom: 5px;">Size:</legend>
+      <div class="size-options">
+        <input type="radio" id="size-34" name="size" value="34" checked />
+        <label for="size-34">34</label>
+        <input type="radio" id="size-36" name="size" value="36" />
+        <label for="size-36">36</label>
+        <input type="radio" id="size-38" name="size" value="38" />
+        <label for="size-38">38</label>
+        <input type="radio" id="size-40" name="size" value="40" />
+        <label for="size-40">40</label>
+        <input type="radio" id="size-42" name="size" value="42" />
+        <label for="size-42">42</label>
+      </div>
+    </fieldset>
+
+    <label for="color">Color:</label>
+    <select id="color"><option>Default</option></select>
+
+    <button id="add-to-bag-btn">Add to Bag</button>
+
+    <a href="index.html" class="back-link">← Back to Home</a>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const model = urlParams.get("model");
+    const look = urlParams.get("look");
+
+    const productsData = {
+      "anya_taylor_joy1": {
+        name: "Giorgio Armani Shorts with Turtleneck Top",
+        description: "Black full cut shorts with matching top.",
+        color: "Black",
+        price: 300.00
+      },
+      "anya_taylor_joy2": {
+        name: "Giorgio Armani Red Leather Short Dress",
+        description: "Elegant and playful short leather dress.",
+        color: "Red",
+        price: 950.00
+      },
+      "anya_taylor_joy3": {
+        name: "Chanel Black Leather Jacket",
+        description: "Black leather jacket for day or evening.",
+        color: "Black",
+        price: 1300.00
+      },
+      "anya_taylor_joy4": {
+        name: "FENDI Sheer Lace Dress",
+        description: "White lace dress for evening events.",
+        color: "White",
+        price: 500.00
+      },
+      "anya_taylor_joy5": {
+        name: "Kate Spade Kiss Print Short Dress",
+        description: "Playful short dress with kiss print.",
+        color: "Black",
+        price: 290.00
+      },
+      "anya_taylor_joy6": {
+        name: "Christian Dior Formal Dress",
+        description: "Elegant jeweled dress for the most formal of occasions.",
+        color: "Blue",
+        price: 950.00
+      },
+      "anya_taylor_joy7": {
+        name: "Versace White Embroidered Gown",
+        description: "Embroidered evening gown for formal events.",
+        color: "White",
+        price: 1500.00
+      },
+      "anya_taylor_joy8": {
+        name: "Chanel Black Velvet Short Dress",
+        description: "V-neck velvet short dress for evenings.",
+        color: "Black",
+        price: 400.00
+      },
+      "anya_taylor_joy9": {
+        name: "Kate Spade Sunflower Dress",
+        description: "Playful sunflower dress for days.",
+        color: "Brown",
+        price: 400.00
+      },
+      "anya_taylor_joy10": {
+        name: "Versace Embroidered Lace Slit Gown",
+        description: "A sheer mesh gown adorned with black floral embroidery and a daring high slit.",
+        color: "Tan",
+        price: 2300.00
+      }
+    };
+
+    function formatModelName(slug) {
+      return slug.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    }
+
+    const productKey = `${model}${look}`;
+    const product = productsData[productKey] || {
+      name: "Unknown Product",
+      description: "Details coming soon.",
+      color: "Default",
+      price: 0
+    };
+
+    const imageFile = `${productKey}.png`;
+
+    document.getElementById("look-image").src = imageFile;
+    document.getElementById("look-image").alt = product.name;
+
+    document.getElementById("look-title").innerHTML =
+      `${product.name} – <a href="models.html?model=${model}" class="model-link">${formatModelName(model)}</a>`;
+
+    document.getElementById("look-description").textContent = product.description;
+    document.getElementById("look-price").textContent = product.price.toFixed(2);
+
+    const colorSelect = document.getElementById("color");
+    colorSelect.innerHTML = `<option>${product.color}</option>`;
+
+    document.getElementById("add-to-bag-btn").addEventListener("click", () => {
+      const sizeSelected = document.querySelector('input[name="size"]:checked').value;
+      const colorSelected = colorSelect.value;
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      const existingItem = cart.find(item =>
+        item.name === product.name &&
+        item.size === sizeSelected &&
+        item.color === colorSelected
+      );
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          name: product.name,
+          price: product.price,
+          quantity: 1,
+          size: sizeSelected,
+          color: colorSelected,
+          image: imageFile
+        });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`Added "${product.name}" (Size ${sizeSelected}) to your bag!`);
+      updateBagCount();
+    });
+
+    function updateBagCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById("bag-count").textContent = totalQty;
+    }
+
+    updateBagCount();
+  </script>
+</body>
+</html>
